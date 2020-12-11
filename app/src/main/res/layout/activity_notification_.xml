@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dharkanenquiry.Activity.Notification_Activity"
+    android:orientation="vertical"
+    android:background="@color/off_grey">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:contentInsetStart="@dimen/_1sdp"
+        android:contentInsetLeft="@dimen/_1sdp"
+        android:contentInsetEnd="@dimen/_1sdp"
+        android:contentInsetRight="@dimen/_1sdp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:contentInsetEnd="@dimen/_1sdp"
+        app:contentInsetLeft="@dimen/_1sdp"
+        app:contentInsetRight="@dimen/_1sdp"
+        app:contentInsetStart="@dimen/_1sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivBackNotify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:src="@drawable/ic_left_arrow"/>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorwhite"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tvNotificationClear"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"
+                android:text="Clear All"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_save"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textSize="@dimen/_11sdp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:backgroundTint="@color/red_dark"/>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNotification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <TextView
+                android:id="@+id/tvEmptyNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empty Notification "
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_300sdp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_15sdp"/>
+
+
+        </RelativeLayout>
+
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/offwhite"
+    tools:context="com.dharkanenquiry.Activity.Task_Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_task"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:contentInsetStart="@dimen/_1sdp"
+            android:contentInsetLeft="@dimen/_1sdp"
+            android:contentInsetEnd="@dimen/_1sdp"
+            android:contentInsetRight="@dimen/_1sdp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            app:contentInsetEnd="@dimen/_1sdp"
+            app:contentInsetLeft="@dimen/_1sdp"
+            app:contentInsetRight="@dimen/_1sdp"
+            app:contentInsetStart="@dimen/_1sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivBacktask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_left_arrow"/>
+
+                <TextView
+                    android:id="@+id/tvTitle_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/ivBacktask"
+                    android:layout_toLeftOf="@id/ivSearch_task"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorwhite"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:id="@+id/ivSearch_task"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_search"
+                    android:tint="@color/colorwhite" />
+
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/_2sdp" />
+
+                <!-- <com.mancj.materialsearchbar.MaterialSearchBar
+                     android:id="@+id/etSearch"
+                     android:layout_width="match_parent"
+                     android:layout_height="?attr/actionBarSize"
+                     android:layout_centerVertical="true"
+                     android:layout_marginLeft="@dimen/_5sdp"
+                     android:layout_marginTop="@dimen/_6sdp"
+                     android:layout_marginRight="@dimen/_5sdp"
+                     android:visibility="gone"
+                     app:mt_hint="Search..."
+                     app:mt_hintColor="@color/colorgray"
+                     app:mt_maxSuggestionsCount="5"
+                     app:mt_placeholder="Search..."
+                     app:mt_speechMode="false"
+                     app:mt_textColor="#000" />-->
+
+                <com.mancj.materialsearchbar.MaterialSearchBar
+                    android:id="@+id/ettaskSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    app:mt_hint="Search..."
+                    app:mt_hintColor="@color/colorgray"
+                    app:mt_placeholder="Search..."
+                    app:mt_speechMode="false"
+                    app:mt_textColor="#000" />
+
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/task_bg_sub"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rlPending"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lilinearPending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+                <TextView
+                    android:id="@+id/tvTaskPending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:text="Pending Task"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/offwhite"
+                    android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/tvTaskPendingTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:textColor="@color/offwhite"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/viewPending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/white"
+                   android:layout_below="@+id/lilinearPending"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/_30sdp"/>
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlCompleted"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lilinearComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tvtaskComplete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Completed Task"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:textColor="@color/offwhite"
+                    android:padding="@dimen/_5sdp"
+                    android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/tvtaskCompleteTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/offwhite"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/viewCompleted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/white"
+                    android:layout_below="@+id/lilinearComplete"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/_30sdp"/>
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        <FrameLayout
+            android:id="@+id/task_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

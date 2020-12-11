@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_focused="true">
+        <!--<shape android:shape="rectangle">
+            <corners android:radius="60dp" />
+            <solid android:color="#ccffffff" />
+            <stroke android:width="1.5dp" android:color="@color/colorAccent"/>
+            <size android:height="50dp" />
+        </shape>-->
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item>
+                <shape android:shape="rectangle">
+                    <stroke android:width="1.5dp" android:color="@color/login_start" />
+                    <corners android:radius="25dp" />
+                    <solid android:color="@color/login_end"/>
+                    <size android:height="@dimen/_30sdp" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+
+    <item>
+        <!--<shape android:shape="rectangle">
+            <corners android:radius="60dp" />
+            <solid android:color="#ccffffff" />
+            <stroke android:width="2dp" android:color="@android:color/transparent"/>
+            <size android:height="50dp" />
+        </shape>-->
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item>
+                <shape android:shape="rectangle">
+                    <!--<stroke android:width="0.5dp" android:color="@color/colorAccent" />-->
+                    <solid android:color="@color/login_start"/>
+                    <corners android:radius="25dp" />
+                    <size android:height="@dimen/_30sdp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

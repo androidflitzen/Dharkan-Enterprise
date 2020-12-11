@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1A237E</color>
+    <color name="colorPrimaryDark">#66ccff</color>
+    <color name="colorAccent">#1A237E</color>
+
+
+    <color name="login_start">#3949AB</color>
+    <color name="all_box_bg">#993333cc</color>
+    <color name="login_end">#66ccff</color>
+
+
+    <color name="login_start1">#993949AB</color>
+    <color name="login_end1">#7766ccff</color>
+
+
+    <color name="label_tag">#443333cc</color>
+    <color name="label_followup">#88B39DDB</color>
+    <color name="label_high">#77FFAB00</color>
+    <color name="lable_medium">#77039BE5</color>
+    <color name="lable_low">#33FFAB00</color>
+    <color name="lable_very_low">#44A0A0A0</color>
+
+    <color name="colorpinkDark">#ce131213</color>
+    <color name="colorgrayyy">#efeeee</color>
+    <color name="colorpurple">#7D165F</color>
+    <color name="colorred">#AA262D</color>
+    <color name="colorgreen">#08be5a</color>
+    <color name="coloryellow">#fbb05e</color>
+    <color name="colordred">#b12222</color>
+    <color name="colororange">#dc4e07</color>
+    <color name="colorwhite">#FFFFFF</color>
+    <color name="colorgray">#A0A0A0</color>
+
+    <color name="offwhite">#ecefef</color>
+
+    <color name="black_semi_transparent">#B5000000</color>
+
+    <color name="text1">#000</color>
+    <color name="text2">#787878</color>
+    <color name="text3">#66969696</color>
+
+    <color name="nav_diveder">#b8ffffff</color>
+
+    <color name="nav_drawer_back_dark">#3d3c3c</color>
+    <color name="red_dark">#E5452E</color>
+    <color name="red_shade">#66E5452E</color>
+
+    <color name="grayBlue">#37474F</color>
+    <color name="off_white">#EDF1F5</color>
+    <color name="color_fail">#ffff4444</color>
+    <color name="color_sucess">#4fca74</color>
+
+    <color name="msg_fail">#ffff4444</color>
+    <color name="green_fed">#388E3C</color>
+    <color name="green_shad">#44388E3C</color>
+    <color name="green_shad2">#77388E3C</color>
+    <color name="sub_text">#98a1b3</color>
+    <color name="black_overlay">#66000000</color>
+
+
+    <color name="view">#50969696</color>
+    <color name="off_grey">#0d969696</color>
+
+    <color name="trans_black">#30000000</color>
+
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+
+    <color name="black">#000000</color>
+</resources>

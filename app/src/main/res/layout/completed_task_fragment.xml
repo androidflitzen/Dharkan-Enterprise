@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progress_bar"
+        style="@style/SpinKitView.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_120sdp"
+        android:layout_marginTop="@dimen/_180sdp"
+        android:layout_marginRight="@dimen/_120sdp"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent" />
+
+   <!-- <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTask_Completed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvNoCompleteTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Completed Task Found "
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_210sdp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_15sdp"/>
+
+
+
+
+</RelativeLayout>

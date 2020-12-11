@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "688589135905",
+    "firebase_url": "https://dharkan-enterprise.firebaseio.com",
+    "project_id": "dharkan-enterprise",
+    "storage_bucket": "dharkan-enterprise.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688589135905:android:ecbcc6a07c400fd5330360",
+        "android_client_info": {
+          "package_name": "com.dharkanenterprise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688589135905-s4bla0hjcr7sq7pevqgmaquhs4o5qj1j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dharkanenterprise",
+            "certificate_hash": "f83fb228b434acb01ef9ba08ff34a600c9276c92"
+          }
+        },
+        {
+          "client_id": "688589135905-8j82gib2kngnulsd8n4qu3vrhm87d15r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dharkanenterprise",
+            "certificate_hash": "dcb2176d13a24c196261bbfe4270e7b4640c3853"
+          }
+        },
+        {
+          "client_id": "688589135905-5tkh1n0hmp50ku36c4l44rh0t5qoguhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfmWbNst-47Q7pxuUjuwAwfpMtribILfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688589135905-5tkh1n0hmp50ku36c4l44rh0t5qoguhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

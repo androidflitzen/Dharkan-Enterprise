@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Dharkan Enterprise</string>
+
+    <string name="no_internet_connection">No internet Connection</string>
+
+    <string name="dialog_message">Welcome to Alert Dialog</string>
+    <string name="dialog_title">Javatpoint Alert Dialog</string>
+
+    <string name="task_delete">Are You Sure Delete this Task ?</string>
+</resources>
