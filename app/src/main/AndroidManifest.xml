@@ -24,10 +24,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.dharkanenquiry.Activity.Add_New_Customer_Activity"></activity>
+        <activity android:name="com.dharkanenquiry.Activity.ViewPDF"></activity>
+        <activity android:name="com.dharkanenquiry.Activity.Add_New_Customer_Activity" />
         <activity android:name="com.dharkanenquiry.Activity.EditCustomer_details_Activity" />
         <activity android:name="com.dharkanenquiry.Activity.Customer_Details_Activity" />
         <activity
@@ -41,6 +43,10 @@
         <activity android:name="com.dharkanenquiry.Activity.Notification_Activity" />
         <activity
             android:name="com.dharkanenquiry.Activity.EditEnquiry_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.dharkanenquiry.Activity.Enquiry_Activity_Test"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity

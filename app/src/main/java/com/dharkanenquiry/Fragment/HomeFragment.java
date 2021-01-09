@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.dharkanenquiry.Activity.Customerlist_Activiy;
 import com.dharkanenquiry.Activity.Enquiry_Activity;
+
 import com.dharkanenquiry.Activity.Task_Activity;
 import com.dharkanenquiry.Model.AllEnquiry;
 import com.dharkanenquiry.Model.AllTasklist;
@@ -139,7 +140,7 @@ public class HomeFragment extends Fragment {
 
     public void allenquiry() {
 
-        Call<AllEnquiry> allEnquiryCall = webapi.allenquiry(SharedPrefsUtils.getSharedPreferenceString(context, SharedPrefsUtils.USER_ID));
+        Call<AllEnquiry> allEnquiryCall = webapi.allenquiry(SharedPrefsUtils.getSharedPreferenceString(context, SharedPrefsUtils.USER_ID),String.valueOf(1));
         allEnquiryCall.enqueue(new Callback<AllEnquiry>() {
             @Override
             public void onResponse(Call<AllEnquiry> call, Response<AllEnquiry> response) {
@@ -154,7 +155,7 @@ public class HomeFragment extends Fragment {
                          tvEnquiryTotal.setText(" (0)");
 
                  }else {
-                     if ( response.body().getTotalEnquiry().equals("0") && response.body().getTotalEnquiry().equals(null)){
+                     if (response.body().getTotalEnquiry().equals("0") && response.body().getTotalEnquiry().equals(null)){
                          tvEnquiryTotal.setText(" (0)");
 
                      }else {

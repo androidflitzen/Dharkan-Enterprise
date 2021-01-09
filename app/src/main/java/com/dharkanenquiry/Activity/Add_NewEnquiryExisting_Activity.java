@@ -245,37 +245,37 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (tvCompanySpn.getText().toString().trim().isEmpty()) {
-                    tvCompnyname1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select CompanyName", R.color.red);
+                    tvCompnyname1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select CompanyName", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquiryProduct.getText().toString().trim().isEmpty()) {
-                    tvProduct1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Product", R.color.red);
+                    tvProduct1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Product", R.color.red_dark);
                     // tvEnquiryProduct.setError("Select ProductName");
                     //tvEnquiryProduct.requestFocus();
                     return;
                 }
                 if (tvEnquirySource.getText().toString().trim().isEmpty()) {
-                    tvSource1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Source", R.color.red);
+                    tvSource1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Source", R.color.red_dark);
                     // tvEnquirySource.setError("Select Source");
                     // tvEnquirySource.requestFocus();
                     return;
                 }
                 if (tvImportance.getText().toString().trim().isEmpty()) {
-                    tvImportance1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Importance", R.color.red);
+                    tvImportance1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Importance", R.color.red_dark);
                     //tvImportance.setError("Select Importance");
                     // tvImportance.requestFocus();
                     return;
                 }
 
                 if (tvEnquiryCatagory.getText().toString().trim().isEmpty()) {
-                    tvCategory1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Category", R.color.red);
+                    tvCategory1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Category", R.color.red_dark);
                     // tvEnquiryCatagory.setError("Select Category");
                     // tvEnquiryCatagory.requestFocus();
                     return;
@@ -309,13 +309,13 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
 
                             } else {
-                                Utils.showToast(context, "oops Something wrong", R.color.red);
+                                Utils.showToast(context, "oops Something wrong", R.color.red_dark);
                                 hidePrd();
                             }
                           //  Log.w("ravi_testing 1",response.body().getMessage());
                         } else {
                           //  Log.w("ravi_testing 1",response.body().getMessage());
-                            Utils.showToast(context, "Try Again", R.color.red);
+                            Utils.showToast(context, "Try Again", R.color.red_dark);
                             hidePrd();
                         }
 
@@ -369,12 +369,12 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
                // progressBar.setVisibility(View.GONE);
@@ -384,7 +384,7 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onFailure(Call<EnquiryCategory> call, Throwable t) {
                 hidePrd();
               //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Try Again", R.color.red);
+                Utils.showToast(context, "Please Try Again", R.color.red_dark);
 
             }
         });
@@ -420,12 +420,12 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -435,7 +435,7 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<EnquirySource> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
 
             }
         });
@@ -472,12 +472,12 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -488,7 +488,7 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onFailure(Call<Product> call, Throwable t) {
                 hidePrd();
                 //progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Try Again", R.color.red);
+                Utils.showToast(context, "Please Try Again", R.color.red_dark);
 
             }
         });
@@ -528,12 +528,12 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "No Data Found", R.color.red);
+                    Utils.showToast(context, "No Data Found", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -544,7 +544,7 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onFailure(Call<Customers> call, Throwable t) {
                 hidePrd();
              //   progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Try Again", R.color.red);
+                Utils.showToast(context, "Please Try Again", R.color.red_dark);
 
             }
         });

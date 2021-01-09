@@ -470,7 +470,7 @@ public class UserProfile_Activity extends AppCompatActivity {
         try {
             if (myFile.exists()) {
                 if (action == 0) {
-                    openPDFFile(myFile);
+                    openPDFFile(myFile,userDetailsModel.getResult().get(0).getOrderUrl());
                 } else if (action == 1) {
                     sendMailInvoice(myFile);
                 }
@@ -492,7 +492,7 @@ public class UserProfile_Activity extends AppCompatActivity {
         try {
             if (myFile.exists()) {
                 if (action == 0) {
-                    openPDFFile(myFile);
+                    openPDFFile(myFile,userDetailsModel.getResult().get(0).getOrderUrl());
                 } else if (action == 1) {
                     sendMailInvoice(myFile);
                 }
@@ -505,9 +505,9 @@ public class UserProfile_Activity extends AppCompatActivity {
         }
     }
 
-    private void openPDFFile(File myFile) {
+    private void openPDFFile(File myFil,String fileUrl) {
 
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/.VasudhaEnquiry/" + myFile.getName());
+        /*File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/.VasudhaEnquiry/" + myFile.getName());
         Utils.showLog("==== openPDFFile " + file.getAbsolutePath());
         Intent target = new Intent(Intent.ACTION_VIEW);
         target.setPackage("com.google.android.apps.docs");
@@ -519,7 +519,17 @@ public class UserProfile_Activity extends AppCompatActivity {
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
+
+       /* Intent defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER);
+        defaultBrowser.setData(Uri.parse("https://docs.google.com/gview?embedded=true&url="+fileUrl));
+        context.startActivity(defaultBrowser);*/
+
+
+        Intent intent=new Intent(context, ViewPDF.class);
+        //intent.putExtra("url",fileUrl);
+        intent.putExtra("MY_FILE",myFil);
+        context.startActivity(intent);
     }
 
     class DownloadFileFromURL extends AsyncTask<String, String, String> {
@@ -576,7 +586,7 @@ public class UserProfile_Activity extends AppCompatActivity {
         protected void onPostExecute(String file_url) {
             hidePrd();
             if (action == 0) {
-                openPDFFile(myFile);
+                openPDFFile(myFile,file_url);
             } else if (action == 1) {
                 sendMailInvoice(myFile);
             }
@@ -614,8 +624,6 @@ public class UserProfile_Activity extends AppCompatActivity {
         final String enquiry_id = getIntent().getStringExtra("enquiry_id");
         getUserDetails(enquiry_id);
         getactionlistapi(enquiry_id);
-
-
     }
 
 

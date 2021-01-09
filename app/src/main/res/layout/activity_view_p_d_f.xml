@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dharkanenquiry.Activity.ViewPDF">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:contentInsetStart="@dimen/_1sdp"
+        android:contentInsetLeft="@dimen/_1sdp"
+        android:contentInsetEnd="@dimen/_1sdp"
+        android:contentInsetRight="@dimen/_1sdp"
+        android:theme="@style/ToolbarTheme"
+        app:contentInsetEnd="@dimen/_1sdp"
+        app:contentInsetLeft="@dimen/_1sdp"
+        app:contentInsetRight="@dimen/_1sdp"
+        app:contentInsetStart="@dimen/_1sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivBackEnquiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_left_arrow"
+                android:layout_marginLeft="@dimen/_10sdp">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_share"
+                android:tint="@color/colorwhite" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolBar"
+        />
+
+</RelativeLayout>

@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.os.StrictMode;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +24,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dharkanenquiry.Activity.Enquiry_Activity;
 import com.dharkanenquiry.Activity.UserProfile_Activity;
+import com.dharkanenquiry.Activity.ViewPDF;
 import com.dharkanenquiry.Model.AllEnquiry;
 import com.dharkanenquiry.Model.Request_S_O;
 import com.dharkanenquiry.Model.Request_quotation;
+import com.dharkanenquiry.utils.CToast;
 import com.dharkanenquiry.utils.FileUtils;
 import com.dharkanenquiry.utils.Network;
 import com.dharkanenquiry.utils.Permission;
@@ -74,7 +78,12 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
     AlertDialog progressDialog;
     Enquiry_Activity enquiryActivity;
 
-    public AllEnquiryAdapter(Context context, List<AllEnquiry.Result> allenquiryList) {
+    private int lastVisibleItem, totalItemCount;
+    private boolean isLoading;
+    private OnLoadMoreListener onLoadMoreListener;
+    private int visibleThreshold = 5;
+
+    public AllEnquiryAdapter(Context context, List<AllEnquiry.Result> allenquiryList, RecyclerView rvEnquiry) {
         this.context = context;
         this.allenquiryList = allenquiryList;
         progressDialog = new ProgressDialog(context);
@@ -86,6 +95,38 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
 
         webapi = Utils.getRetrofitClient().create(WebApi.class);
 
+        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) rvEnquiry.getLayoutManager();
+        rvEnquiry.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                totalItemCount = linearLayoutManager.getItemCount();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                    if (onLoadMoreListener != null) {
+                        onLoadMoreListener.onLoadMore();
+                    }
+                    isLoading = true;
+                }
+            }
+        });
+
+    }
+
+    public void setOnLoadMoreListener(OnLoadMoreListener mOnLoadMoreListener) {
+        this.onLoadMoreListener = mOnLoadMoreListener;
+    }
+
+    public interface OnLoadMoreListener {
+        void onLoadMore();
+    }
+
+    public void setLoaded() {
+        isLoading = false;
+    }
+
+    public boolean getLoaded() {
+        return isLoading;
     }
 
 
@@ -122,7 +163,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         }
 
         holder.tvImportance.setText(allenquiryList.get(position).getImportance());
-        holder.tvEnquiryidNo.setText(allenquiryList.get(position).getUnique_id());
+        holder.tvEnquiryidNo.setText(allenquiryList.get(position).getUniqueId());
 
         holder.tvEnquiryStatus1.setText(allenquiryList.get(position).getEnquiryStatus());
 
@@ -430,7 +471,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         try {
             if (myFile.exists()) {
                 if (action == 0) {
-                    openPDFFile(myFile);
+                    openPDFFile(myFile,allenquiryList.get(position).getOrderUrl());
                 } else if (action == 1) {
                     sendMailInvoice(myFile);
                 }
@@ -522,7 +563,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         try {
             if (myFile.exists()) {
                 if (action == 0) {
-                    openPDFFile(myFile);
+                    openPDFFile(myFile,allenquiryList.get(position).getOrderUrl());
                 } else if (action == 1) {
                     sendMailInvoice(myFile);
                 }
@@ -535,9 +576,9 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         }
     }
 
-    private void openPDFFile(File myFile) {
+    private void openPDFFile(File myFile,String fileUrl) {
 
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/.VasudhaEnquiry/" + myFile.getName());
+        /*File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/.VasudhaEnquiry/" + myFile.getName());
         Utils.showLog("==== openPDFFile " + file.getAbsolutePath());
         Intent target = new Intent(Intent.ACTION_VIEW);
         target.setPackage("com.google.android.apps.docs");
@@ -549,7 +590,27 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
+
+      /*  Intent defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_VIEW, Intent.CATEGORY_APP_BROWSER);
+        //defaultBrowser.setData(Uri.parse("https://docs.google.com/gview?embedded=true&url="+fileUrl));
+        defaultBrowser.setData(Uri.parse(fileUrl));
+        context.startActivity(defaultBrowser);*/
+
+        /*Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(fileUrl));
+        context.startActivity(i);*/
+
+        /*Intent defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER);
+        defaultBrowser.setData(Uri.parse(fileUrl));
+        //defaultBrowser.setDataAndType(Uri.parse(fileUrl), "application/pdf");
+        context.startActivity(defaultBrowser);*/
+
+        Intent intent=new Intent(context, ViewPDF.class);
+        //intent.putExtra("url",fileUrl);
+        intent.putExtra("MY_FILE",myFile);
+        context.startActivity(intent);
+
     }
 
     class DownloadFileFromURL extends AsyncTask<String, String, String> {
@@ -606,7 +667,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         protected void onPostExecute(String file_url) {
             pDialog.dismiss();
             if (action == 0) {
-                openPDFFile(myFile);
+                openPDFFile(myFile,file_url);
             } else if (action == 1) {
                 sendMailInvoice(myFile);
             }

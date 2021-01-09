@@ -354,88 +354,88 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (etCustomernamespn.getText().toString().trim().isEmpty()) {
-                    tvCustomerName.setTextColor(getResources().getColor(R.color.red));
+                    tvCustomerName.setTextColor(getResources().getColor(R.color.red_dark));
                     etCustomernamespn.requestFocus();
-                    Utils.showToast(context, "Enter Customer Name", R.color.red);
+                    Utils.showToast(context, "Enter Customer Name", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }if (etCustomerWhatsNospn.getText().toString().trim().isEmpty()) {
-                    tvCustomerWhatsNo.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter WhatsappNo.", R.color.red);
+                    tvCustomerWhatsNo.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter WhatsappNo.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }if (etCustomerEmailspn.getText().toString().trim().isEmpty()) {
-                    tvCustomerEmail.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter EmailAddress.", R.color.red);
+                    tvCustomerEmail.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter EmailAddress.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }if (etCustomerAddressspn.getText().toString().trim().isEmpty()) {
-                    tvCustomerAddress.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter Customer Address.", R.color.red);
+                    tvCustomerAddress.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter Customer Address.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }if (tvStateSpn.getText().toString().trim().isEmpty()) {
-                    tvEnquiryState.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select State.", R.color.red);
+                    tvEnquiryState.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select State.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (etEnquiryCitySpn.getText().toString().trim().isEmpty()) {
-                    tvEnquiryCity.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Enter City.", R.color.red);
+                    tvEnquiryCity.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Enter City.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 } if (tvEnquiryCategorySpn.getText().toString().trim().isEmpty()) {
-                    tvEnquiryCategDepory.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Category(Department).", R.color.red);
+                    tvEnquiryCategDepory.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Category(Department).", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvAssignUserSpn.getText().toString().trim().isEmpty()) {
-                    tvAssignUser.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Assign user.", R.color.red);
+                    tvAssignUser.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Assign user.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquiryProduct.getText().toString().trim().isEmpty()) {
-                    tvProduct1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Product.", R.color.red);
+                    tvProduct1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Product.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquirySource.getText().toString().trim().isEmpty()) {
-                    tvSource1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Source.", R.color.red);
+                    tvSource1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Source.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvImportance.getText().toString().trim().isEmpty()) {
-                    tvImportance1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Importance.", R.color.red);
+                    tvImportance1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Importance.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquiryRegion.getText().toString().trim().isEmpty()) {
-                    tvRegion.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Region.", R.color.red);
+                    tvRegion.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Region.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquiryCatagory.getText().toString().trim().isEmpty()) {
-                    tvCategory1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Please Select Category.", R.color.red);
+                    tvCategory1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Please Select Category.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
@@ -462,13 +462,13 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                             }else {
-                                Utils.showToast(context, "oops Something Wrong", R.color.red);
+                                Utils.showToast(context, "oops Something Wrong", R.color.red_dark);
                                 hidePrd();
                             }
 
                         }else {
 
-                            Utils.showToast(context, "Try Again", R.color.red);
+                            Utils.showToast(context, "Try Again", R.color.red_dark);
                             hidePrd();
                         }
 
@@ -520,12 +520,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
                 // progressBar.setVisibility(View.GONE);
@@ -535,7 +535,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<AllRegion> call, Throwable t) {
                 hidePrd();
                 //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red);
+                Utils.showToast(context, "Please check your internet", R.color.red_dark);
 
             }
         });
@@ -721,12 +721,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
                 // progressBar.setVisibility(View.GONE);
@@ -736,7 +736,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<EnquiryCategory> call, Throwable t) {
                 hidePrd();
                 //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red);
+                Utils.showToast(context, "Please check your internet", R.color.red_dark);
 
             }
         });
@@ -920,12 +920,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -935,7 +935,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<EnquirySource> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
 
             }
         });
@@ -1102,12 +1102,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -1118,7 +1118,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<Product> call, Throwable t) {
                 hidePrd();
                 //progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Check Your Internet.", R.color.red);
+                Utils.showToast(context, "Please Check Your Internet.", R.color.red_dark);
 
             }
         });
@@ -1279,11 +1279,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 progressBar.setVisibility(View.GONE);
             }
@@ -1291,7 +1291,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red);
+                Utils.showToast(context, "Please check your internet", R.color.red_dark);
 
             }
         });
@@ -1443,12 +1443,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                         enquiryCategoryDepDailog(view);
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -1458,7 +1458,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<AllCategoryDeparment> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 hidePrd();
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
             }
         });
 
@@ -1623,12 +1623,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                         enquirystatedailog(view);
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -1638,7 +1638,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<AllState> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 hidePrd();
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
             }
         });
 

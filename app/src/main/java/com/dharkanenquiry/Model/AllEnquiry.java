@@ -22,7 +22,7 @@ public class AllEnquiry {
     private String quotationSent;
     @SerializedName("auto_followup")
     @Expose
-    private String autoFollowup;
+    private Integer autoFollowup;
     @SerializedName("closed_enquiry")
     @Expose
     private String closedEnquiry;
@@ -36,7 +36,7 @@ public class AllEnquiry {
     @Expose
     private String message;
 
-    public  List<Result> getResult() {
+    public List<Result> getResult() {
         return result;
     }
 
@@ -68,11 +68,11 @@ public class AllEnquiry {
         this.quotationSent = quotationSent;
     }
 
-    public String getAutoFollowup() {
+    public Integer getAutoFollowup() {
         return autoFollowup;
     }
 
-    public void setAutoFollowup(String autoFollowup) {
+    public void setAutoFollowup(Integer autoFollowup) {
         this.autoFollowup = autoFollowup;
     }
 
@@ -117,11 +117,9 @@ public class AllEnquiry {
         @SerializedName("enquiry_id")
         @Expose
         private String enquiryId;
-
         @SerializedName("unique_id")
         @Expose
-        private String unique_id;
-
+        private String uniqueId;
         @SerializedName("customer_name")
         @Expose
         private String customerName;
@@ -175,16 +173,16 @@ public class AllEnquiry {
             this.enquiryId = enquiryId;
         }
 
+        public String getUniqueId() {
+            return uniqueId;
+        }
+
+        public void setUniqueId(String uniqueId) {
+            this.uniqueId = uniqueId;
+        }
+
         public String getCustomerName() {
             return customerName;
-        }
-
-        public String getUnique_id() {
-            return unique_id;
-        }
-
-        public void setUnique_id(String unique_id) {
-            this.unique_id = unique_id;
         }
 
         public void setCustomerName(String customerName) {
@@ -278,6 +276,7 @@ public class AllEnquiry {
         public void setRegion(String region) {
             this.region = region;
         }
+
     }
 
 }
