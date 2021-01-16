@@ -3,9 +3,10 @@ package com.dharkanenquiry.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AllEnquiry {
+public class AllEnquiry implements Serializable{
 
 
     @SerializedName("result")
@@ -109,7 +110,7 @@ public class AllEnquiry {
     }
 
 
-    public class Result {
+    public class Result implements Serializable {
 
         @SerializedName("added_on")
         @Expose

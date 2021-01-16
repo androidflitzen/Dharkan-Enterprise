@@ -28,7 +28,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.dharkanenquiry.Activity.ViewPDF"></activity>
+        <activity android:name="com.dharkanenquiry.Activity.SearchEnquiry_Activity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name="com.dharkanenquiry.Activity.ViewPDF" />
         <activity android:name="com.dharkanenquiry.Activity.Add_New_Customer_Activity" />
         <activity android:name="com.dharkanenquiry.Activity.EditCustomer_details_Activity" />
         <activity android:name="com.dharkanenquiry.Activity.Customer_Details_Activity" />

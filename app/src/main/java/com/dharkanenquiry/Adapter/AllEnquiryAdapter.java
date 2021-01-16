@@ -240,6 +240,9 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
                 holder.ivOrderstatusPdf.setVisibility(View.VISIBLE);
                 holder.txtRequestCorrection.setVisibility(View.VISIBLE);
                 holder.tvOrderstatus.setVisibility(View.GONE);
+
+                System.out.println("===========pdf url  "+allenquiryList.get(position).getOrderUrl());
+
             }else {
                 holder.ivOrderstatusPdf.setVisibility(View.GONE);
                 holder.txtRequestCorrection.setVisibility(View.GONE);

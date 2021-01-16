@@ -90,7 +90,7 @@
                     app:mt_speechMode="false"
                     app:mt_textColor="#000" />-->
 
-                  <com.mancj.materialsearchbar.MaterialSearchBar
+                  <!--<com.mancj.materialsearchbar.MaterialSearchBar
                       android:id="@+id/etSearch"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
@@ -100,7 +100,7 @@
                       app:mt_hintColor="@color/colorgray"
                       app:mt_placeholder="Search..."
                       app:mt_speechMode="false"
-                      app:mt_textColor="#000" />
+                      app:mt_textColor="#000" />-->
 
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>

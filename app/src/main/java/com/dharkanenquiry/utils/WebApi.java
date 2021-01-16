@@ -56,6 +56,10 @@ public interface WebApi {
     @POST("enquirys/all_enquirys")
     Call<AllEnquiry> allenquiry(@Field("user_id") String user_id,@Field("page") String page);
 
+    @FormUrlEncoded
+    @POST("enquirys/all_enquirys")
+    Call<AllEnquiry> allenquiry_(@Field("user_id") String user_id);
+
 
     @FormUrlEncoded
     @POST("tasks/total_task")

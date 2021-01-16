@@ -12,20 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dharkanenquiry.Adapter.AllEnquiryAdapter;
-import com.dharkanenquiry.Adapter.AllEnquiryAdapter_Test;
 import com.dharkanenquiry.Model.AllEnquiry;
-import com.dharkanenquiry.utils.PaginationCallback;
 import com.dharkanenquiry.utils.SharedPrefsUtils;
 import com.dharkanenquiry.utils.Utils;
 import com.dharkanenquiry.utils.WebApi;
@@ -35,7 +30,6 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.Circle;
-import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -61,8 +55,8 @@ public class Enquiry_Activity extends AppCompatActivity {
 
     @BindView(R.id.view)
     View view;
-    @BindView(R.id.etSearch)
-    MaterialSearchBar etSearch;
+   /* @BindView(R.id.etSearch)
+    MaterialSearchBar etSearch;*/
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.rvEnquiry)
@@ -109,13 +103,10 @@ public class Enquiry_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_enquiry_);
 
         ButterKnife.bind(this);
-
+        webapi = Utils.getRetrofitClient().create(WebApi.class);
         context = Enquiry_Activity.this;
 
-
         initUI();
-
-
     }
 
     private void startanimation() {
@@ -149,15 +140,17 @@ public class Enquiry_Activity extends AppCompatActivity {
         Sprite doubleBounce = new Circle();
         progressBar.setIndeterminateDrawable(doubleBounce);
 
-        webapi = Utils.getRetrofitClient().create(WebApi.class);
-
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etSearch.setVisibility(View.VISIBLE);
+               /* etSearch.setVisibility(View.VISIBLE);
                 etSearch.enableSearch();
                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                getSupportActionBar().setDisplayShowHomeEnabled(false);
+                getSupportActionBar().setDisplayShowHomeEnabled(false);*/
+
+
+                Intent intent=new Intent(Enquiry_Activity.this,SearchEnquiry_Activity.class);
+                startActivity(intent);
 
             }
         });
@@ -204,7 +197,7 @@ public class Enquiry_Activity extends AppCompatActivity {
         });
 
 
-        etSearch.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+       /* etSearch.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
                 if (!enabled) {
@@ -243,9 +236,9 @@ public class Enquiry_Activity extends AppCompatActivity {
                 if (text.length() > 0) {
                     performSearch(String.valueOf(text), true);
 
-                   /* startActivity(new Intent(activity, SearchProductActivity.class).putExtra("search_txt", etSearch.getText()));
+                   *//* startActivity(new Intent(activity, SearchProductActivity.class).putExtra("search_txt", etSearch.getText()));
                     etSearch.setText("");
-                    etSearch.disableSearch();*/
+                    etSearch.disableSearch();*//*
                 } else if (rvEnquiry != null) {
                     Searchlist.clear();
                     Searchlist.addAll(allenquiryList);
@@ -259,18 +252,18 @@ public class Enquiry_Activity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
 
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 page=1;
-                if (etSearch.getText().isEmpty()) {
+                //if (etSearch.getText().isEmpty()) {
                     getAllEnquirylist();
-                } else {
-                    hideSwipeRefresh();
-                }
+               // } else {
+                   // hideSwipeRefresh();
+                //}
 
             }
         });
@@ -278,7 +271,7 @@ public class Enquiry_Activity extends AppCompatActivity {
         allEnquiryAdapter.setOnLoadMoreListener(new AllEnquiryAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                if (etSearch.getText().toString().isEmpty()) {
+                //if (etSearch.getText().toString().isEmpty()) {
                     if (page <= total_page) {
                         tempallenquiryList.add(null);
                         if (tempallenquiryList.size() > 0) {
@@ -293,7 +286,7 @@ public class Enquiry_Activity extends AppCompatActivity {
                             }
                         }, 1000);
                     }
-                }
+                //}
             }
         });
 
@@ -333,6 +326,7 @@ public class Enquiry_Activity extends AppCompatActivity {
 
         }
     }
+
 
     public void getAllEnquirylist() {
 
