@@ -7,4 +7,5 @@
     <string name="dialog_title">Javatpoint Alert Dialog</string>
 
     <string name="task_delete">Are You Sure Delete this Task ?</string>
+    <string name="current_location">Last Location</string>
 </resources>

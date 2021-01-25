@@ -12,9 +12,11 @@ public class SharedPrefsUtils {
     public static final String USER_EMAIL = "user_email";
 
     public static final String USER_TYPE = "user_type";
+    public static final String TYPE = "type";
     public static final String TOKEN = "";
     public static final String USER_ID = "";
     public static final String IS_LOG_IN = "is_login";
+    public static final String CHECK_SERVICE = "check_service";
 
     public static SharedPreferences getSharePref(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);

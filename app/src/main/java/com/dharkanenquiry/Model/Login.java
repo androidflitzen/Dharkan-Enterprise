@@ -21,6 +21,12 @@ public class Login {
     @SerializedName("user_type")
     @Expose
     private String userType;
+    @SerializedName("type")
+    @Expose
+    private Integer type;
+    @SerializedName("device_id")
+    @Expose
+    private String deviceId;
 
     public Integer getStatus() {
         return status;
@@ -60,5 +66,21 @@ public class Login {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }

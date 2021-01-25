@@ -4,6 +4,7 @@ import android.widget.ScrollView;
 
 import com.dharkanenquiry.Activity.Add_NewEnquiry_Acitivity;
 import com.dharkanenquiry.Model.ActionAdd;
+import com.dharkanenquiry.Model.AddLatLongModel;
 import com.dharkanenquiry.Model.AddNewEnquiry;
 import com.dharkanenquiry.Model.Add_new_Customer;
 import com.dharkanenquiry.Model.AllCategoryDeparment;
@@ -20,6 +21,7 @@ import com.dharkanenquiry.Model.EditEnquiry;
 import com.dharkanenquiry.Model.EnquiriesActionList;
 import com.dharkanenquiry.Model.EnquiryCategory;
 import com.dharkanenquiry.Model.EnquirySource;
+import com.dharkanenquiry.Model.GetLastLatLongModel;
 import com.dharkanenquiry.Model.Login;
 import com.dharkanenquiry.Model.NewEnquiry;
 import com.dharkanenquiry.Model.NewTask;
@@ -183,5 +185,18 @@ public interface WebApi {
     @FormUrlEncoded
     @POST("customers/customer_details")
     Call<AllCustomerList> getcustomerdetailsapi(@Field("customer_id")String customer_id);
+
+    @FormUrlEncoded
+    @POST("users/all_users")
+    Call<Users> getSalesPerson(@Field("is_sales") String is_sales);
+
+    @FormUrlEncoded
+    @POST("users/add_latlong")
+    Call<AddLatLongModel> addLatLong(@Field("user_id") String user_id, @Field("latitude") String latitude , @Field("longitude") String longitude);
+
+    @FormUrlEncoded
+    @POST("users/user_last_latlong")
+    Call<GetLastLatLongModel> getLastLatLong(@Field("user_id") String user_id);
+
 
 }

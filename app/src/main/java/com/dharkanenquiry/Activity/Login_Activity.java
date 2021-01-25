@@ -178,6 +178,7 @@ public class Login_Activity extends AppCompatActivity {
                             SharedPrefsUtils.setSharedPreferenceString(Login_Activity.this, SharedPrefsUtils.USER_ID, String.valueOf(response.body().getUserId()));
                             SharedPrefsUtils.setSharedPreferenceString(Login_Activity.this, SharedPrefsUtils.USER_NAME, response.body().getUsername());
                             SharedPrefsUtils.setSharedPreferenceString(Login_Activity.this, SharedPrefsUtils.USER_TYPE, response.body().getUserType());
+                            SharedPrefsUtils.setSharedPreferenceInt(Login_Activity.this, SharedPrefsUtils.TYPE, response.body().getType());
 
                             // SharedPrefsUtils.setSharedPreferenceString(Login_Activity.this, SharedPrefsUtils.TOKEN, response.body().getUserType());
                             SharedPrefsUtils.setSharedPreferenceBoolean(Login_Activity.this, SharedPrefsUtils.IS_LOG_IN, true);
