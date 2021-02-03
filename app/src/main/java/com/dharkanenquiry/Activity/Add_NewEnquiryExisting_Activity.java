@@ -144,6 +144,9 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         context = Add_NewEnquiryExisting_Activity.this;
+        webapi = Utils.getRetrofitClient().create(WebApi.class);
+
+
 
         initUI();
 
@@ -153,6 +156,7 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         tvTitle.setText("Add New Enquiry (Existing Company)");
+
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        // getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -161,6 +165,11 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
 
         ivBackEnqExisting = (ImageView) findViewById(R.id.ivBackEnqExisting);
+
+        getCompanyapi(tvCompanySpn,false);
+        getproductapi(tvEnquiryProduct,false);
+        getenquirysourcapi(tvEnquirySource,false);
+        getenquirycategoryapi(tvEnquiryCatagory,false);
 
         ivBackEnqExisting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,14 +181,16 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
         Sprite doubleBounce = new Circle();
         progressBar.setIndeterminateDrawable(doubleBounce);
 
-        webapi = Utils.getRetrofitClient().create(WebApi.class);
-
         rvCompnyspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getCompanyapi(tvCompanySpn);
-
+                //getCompanyapi(tvCompanySpn);
+                if(itemListCustomer.size()>0){
+                    customerDialog(tvCompanySpn);
+                }else {
+                    getCompanyapi(tvCompanySpn,true);
+                }
             }
         });
 
@@ -187,7 +198,13 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getproductapi(tvEnquiryProduct);
+               // getproductapi(tvEnquiryProduct);
+
+                if(itemListProduct.size()>0){
+                    productDialog(tvEnquiryProduct);
+                }else {
+                    getproductapi(tvEnquiryProduct,true);
+                }
 
             }
         });
@@ -196,7 +213,13 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquirysourcapi(tvEnquirySource);
+               // getenquirysourcapi(tvEnquirySource);
+
+                if(itemListEnquirySource.size()>0){
+                    enquirySourceDialog(tvEnquirySource);
+                }else {
+                    getenquirysourcapi(tvEnquirySource,true);
+                }
 
             }
         });
@@ -205,7 +228,13 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquirycategoryapi(tvEnquiryCatagory);
+              //  getenquirycategoryapi(tvEnquiryCatagory);
+
+                if(itemListEnquiryCategory.size()>0){
+                    enquiryCategoryDialog(tvEnquiryCatagory);
+                }else {
+                    getenquirycategoryapi(tvEnquiryCatagory,true);
+                }
 
             }
         });
@@ -340,9 +369,11 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
     }
 
 
-    private void getenquirycategoryapi(final TextView view) {
+    private void getenquirycategoryapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
       //  progressBar.setVisibility(View.VISIBLE);
         itemListEnquiryCategory.clear();
         itemListEnquiryCategoryTemp.clear();
@@ -365,7 +396,9 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryCategoryDialog(view);
+                        if(checkDialog==true){
+                            enquiryCategoryDialog(view);
+                        }
 
 
                     } else {
@@ -384,17 +417,18 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onFailure(Call<EnquiryCategory> call, Throwable t) {
                 hidePrd();
               //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Try Again", R.color.red_dark);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please Try Again", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
-    private void getenquirysourcapi(final TextView view) {
+    private void getenquirysourcapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
        // progressBar.setVisibility(View.VISIBLE);
         itemListEnquirySource.clear();
         itemListEnquirySourceTemp.clear();
@@ -416,7 +450,10 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
                                 return object1.getEsName().compareTo(object2.getEsName());
                             }
                         });
-                        enquirySourceDialog(view);
+
+                        if(checkDialog==true){
+                            enquirySourceDialog(view);
+                        }
 
 
                     } else {
@@ -434,19 +471,21 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<EnquirySource> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
-
+                hidePrd();
+                //progressBar.setVisibility(View.GONE);
+                if(checkDialog==true){
+                    Utils.showToast(context, "No Internet Connection", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
 
-    private void getproductapi(final TextView view) {
+    private void getproductapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
        // progressBar.setVisibility(View.VISIBLE);
         itemListProduct.clear();
         itemListProductTemp.clear();
@@ -468,7 +507,10 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
                                 return object1.getPName().compareTo(object2.getPName());
                             }
                         });
-                        productDialog(view);
+
+                        if(checkDialog==true){
+                            productDialog(view);
+                        }
 
 
                     } else {
@@ -488,16 +530,15 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             public void onFailure(Call<Product> call, Throwable t) {
                 hidePrd();
                 //progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Try Again", R.color.red_dark);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please Try Again", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
 
-    private void getCompanyapi(final TextView view) {
+    private void getCompanyapi(final TextView view,boolean checkDialog) {
 
         showPrd();
         //progressBar.setVisibility(View.VISIBLE);
@@ -524,7 +565,9 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
                             }
                         });
 
-                        customerDialog(view);
+                        if(checkDialog==true){
+                            customerDialog(view);
+                        }
 
 
                     } else {
@@ -582,6 +625,9 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             arrayListTemp.add(itemListEnquiryCategory.get(i).getEcName());
             arrayListId.add(itemListEnquiryCategory.get(i).getEcId());
         }
+
+        itemListEnquiryCategoryTemp.clear();
+        itemListEnquiryCategoryTemp.addAll(itemListEnquiryCategory);
 
         enqryCategory_spn_adapter = new EnqryCategory_Spn_Adapter_New(context, itemListEnquiryCategoryTemp);
 
@@ -855,6 +901,9 @@ public class Add_NewEnquiryExisting_Activity extends AppCompatActivity {
             arrayListTemp.add(itemListProduct.get(i).getPName());
             arrayListId.add(itemListProduct.get(i).getPId());
         }
+
+        itemListProductTemp.clear();
+        itemListProductTemp.addAll(itemListProduct);
 
         product_spn_adapter = new Product_Spn_Adapter_New(context, itemListProductTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_NewEnquiryExisting_Activity.this, LinearLayoutManager.VERTICAL, false));

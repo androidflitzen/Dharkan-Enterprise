@@ -393,7 +393,7 @@ public class UserProfile_Activity extends AppCompatActivity {
 
                     } else {
 
-                        Utils.showToast(context, "Opps Something Wrong..", R.color.red);
+                        Utils.showToast(context, "Opps Something Wrong..", R.color.red_dark);
                         hidePrd();
                     }
 

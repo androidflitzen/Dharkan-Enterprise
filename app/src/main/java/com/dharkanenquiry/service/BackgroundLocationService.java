@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Binder;
@@ -16,6 +17,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -41,9 +43,9 @@ public class BackgroundLocationService extends Service {
     private LocationListener mLocationListener;
     private LocationManager mLocationManager;
     private NotificationManager notificationManager;
-   // private final int LOCATION_INTERVAL = 100000;
+    //private final int LOCATION_INTERVAL = 100000;
   //  private final int LOCATION_INTERVAL = 1800000;
-  //  private final int LOCATION_INTERVAL = 30000;
+   // private final int LOCATION_INTERVAL = 600000;
     private final int LOCATION_INTERVAL = 3600000;
     private final int LOCATION_DISTANCE = 10;
     WebApi webapi;
@@ -63,6 +65,7 @@ public class BackgroundLocationService extends Service {
 
         public LocationListener(String provider) {
             mLastLocation = new Location(provider);
+            System.out.println("==========mLastLocation  "+mLastLocation);
         }
 
         @Override
@@ -148,9 +151,13 @@ public class BackgroundLocationService extends Service {
     }
 
 
+    @SuppressLint("MissingPermission")
     public void startTracking() {
         initializeLocationManager();
         mLocationListener = new LocationListener(LocationManager.GPS_PROVIDER);
+       // mLocationListener = new LocationListener(LocationManager.NETWORK_PROVIDER);
+
+        System.out.println("=========mLocationListener  "+mLocationListener);
 
         try {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -164,7 +171,10 @@ public class BackgroundLocationService extends Service {
 
                     //  mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE, mLocationListener);
 
+                    System.out.println("=============Handler");
+
                     SharedPrefsUtils.setSharedPreferenceBoolean(getApplicationContext(), SharedPrefsUtils.CHECK_SERVICE, true);
+                  //  mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_INTERVAL, 0, mLocationListener);
                     mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, 0, mLocationListener);
 
                 }

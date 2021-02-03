@@ -196,6 +196,11 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait...");
         progressDialog.setCanceledOnTouchOutside(false);
 
+        getCategoryDepapi(tvCustomerCatDept,false);
+        getAllStateapi(tvStateSpn,false);
+        getenquiryregionapi(tvedtcustomerRegion,false);
+        getUserApi(tvedtAssignUser,false);
+
         ivBackAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,7 +211,12 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
         rvEnquiryCategoryDepspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCategoryDepapi(tvCustomerCatDept);
+                //getCategoryDepapi(tvCustomerCatDept);
+                if(allCategoryDeptitemList.size()>0){
+                    enquiryCategoryDepDailog(tvCustomerCatDept);
+                }else {
+                    getCategoryDepapi(tvCustomerCatDept,true);
+                }
             }
         });
 
@@ -214,7 +224,12 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getAllStateapi(tvStateSpn);
+               // getAllStateapi(tvStateSpn);
+                if(allstateitemList.size()>0){
+                    enquirystatedailog(tvStateSpn);
+                }else {
+                    getAllStateapi(tvStateSpn,true);
+                }
             }
         });
 
@@ -222,14 +237,24 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquiryregionapi(tvedtcustomerRegion);
+               // getenquiryregionapi(tvedtcustomerRegion);
+                if(allregionitemList.size()>0){
+                    enquiryRegionDialog(tvedtcustomerRegion);
+                }else {
+                    getenquiryregionapi(tvedtcustomerRegion,true);
+                }
             }
         });
 
         rvedtAssignspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getUserApi(tvedtAssignUser);
+                //getUserApi(tvedtAssignUser);
+                if(itemListUser.size()>0){
+                    userDialog(tvedtAssignUser);
+                }else {
+                    getUserApi(tvedtAssignUser,true);
+                }
             }
         });
 
@@ -269,58 +294,58 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (etCustomernamespn.getText().toString().trim().isEmpty()) {
-                    tvCustomerName.setTextColor(getResources().getColor(R.color.red));
+                    tvCustomerName.setTextColor(getResources().getColor(R.color.red_dark));
                     etCustomernamespn.requestFocus();
-                    Utils.showToast(context, "Enter Customer Name", R.color.red);
+                    Utils.showToast(context, "Enter Customer Name", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvEnquiryCategorySpn.getText().toString().trim().isEmpty()) {
-                    tvCustomerCatDept.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Category Department.", R.color.red);
+                    tvCustomerCatDept.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Category Department.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (etCustomercityspn.getText().toString().trim().isEmpty()) {
-                    tvedtCustomercity.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter City Name.", R.color.red);
+                    tvedtCustomercity.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter City Name.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvStateSpn.getText().toString().trim().isEmpty()) {
-                    tvEnquiryState.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select State.", R.color.red);
+                    tvEnquiryState.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select State.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvedtcustomerRegionspn.getText().toString().trim().isEmpty()) {
-                    tvedtcustomerRegion.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Region.", R.color.red);
+                    tvedtcustomerRegion.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Region.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvedtAssignUserSpn.getText().toString().trim().isEmpty()) {
-                    tvedtAssignUser.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Assign User.", R.color.red);
+                    tvedtAssignUser.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Assign User.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (etCustomerPhnNospn.getText().toString().trim().isEmpty()) {
-                    tvedtCustomerPhnNo.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter Whatsapp/Phone No.", R.color.red);
+                    tvedtCustomerPhnNo.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter Whatsapp/Phone No.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (etCustomerEmailspn.getText().toString().trim().isEmpty()) {
-                    tvedtCustomerEmail.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Enter Email Address.", R.color.red);
+                    tvedtCustomerEmail.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Enter Email Address.", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
@@ -352,7 +377,7 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
 
                             }else {
 
-                                Utils.showToast(context, "Try Again", R.color.red);
+                                Utils.showToast(context, "Try Again", R.color.red_dark);
                                 hidePrd();
                             }
 
@@ -374,9 +399,12 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
     }
 
 
-    private void getUserApi(final TextView view) {
+    private void getUserApi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
+
         itemListUser.clear();
         itemListUserTemp.clear();
 
@@ -398,15 +426,18 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
                                 return object1.getName().compareTo(object2.getName());
                             }
                         });
-                        userDialog(view);
+
+                        if(checkDialog==true){
+                            userDialog(view);
+                        }
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
             }
@@ -414,12 +445,11 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
                 hidePrd();
-                Utils.showToast(context, "Please check your internet", R.color.red);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please check your internet", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
     private void userDialog(final TextView textView) {
@@ -447,6 +477,9 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             arrayListTemp.add(itemListUser.get(i).getName());
             arrayListId.add(itemListUser.get(i).getUserId());
         }
+
+        itemListUserTemp.clear();
+        itemListUserTemp.addAll(itemListUser);
 
         alluseradapter = new AllUserAdapter(context, itemListUserTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_New_Customer_Activity.this, LinearLayoutManager.VERTICAL, false));
@@ -539,9 +572,11 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
 
     }
 
-    private void getenquiryregionapi(final TextView view) {
+    private void getenquiryregionapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         //  progressBar.setVisibility(View.VISIBLE);
         allregionitemList.clear();
         allregionitemListTemp.clear();
@@ -564,16 +599,17 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryRegionDialog(view);
-
+                        if(checkDialog==true){
+                            enquiryRegionDialog(view);
+                        }
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
                 // progressBar.setVisibility(View.GONE);
@@ -583,8 +619,9 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             public void onFailure(Call<AllRegion> call, Throwable t) {
                 hidePrd();
                 //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please check your internet", R.color.red_dark);
+                }
             }
         });
 
@@ -622,6 +659,9 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             arrayListTemp.add(allregionitemList.get(i).getRegionName());
             arrayListId.add(allregionitemList.get(i).getRegionId());
         }
+
+        allregionitemListTemp.clear();
+        allregionitemListTemp.addAll(allregionitemList);
 
         allRegion_spn_adapter = new AllRegion_Spn_Adapter(context, allregionitemListTemp);
 
@@ -741,8 +781,11 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
     }
 
 
-    private void getAllStateapi(final TextView view) {
-        showPrd();
+    private void getAllStateapi(final TextView view,boolean checkDialog) {
+
+        if(checkDialog==true){
+            showPrd();
+        }
 
         allstateitemList.clear();
         allstateitemListTemp.clear();
@@ -764,15 +807,18 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
                                 return object1.getStateName().compareTo(object2.getStateName());
                             }
                         });
-                        enquirystatedailog(view);
+
+                        if(checkDialog==true){
+                            enquirystatedailog(view);
+                        }
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -781,7 +827,9 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<AllState> call, Throwable t) {
                 hidePrd();
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                if(checkDialog==true){
+                    Utils.showToast(context, "No Internet Connection", R.color.red_dark);
+                }
             }
         });
 
@@ -814,6 +862,9 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             arrayListTemp.add(allstateitemList.get(i).getStateName());
             arrayListId.add(allstateitemList.get(i).getStateName());
         }
+
+        allstateitemListTemp.clear();
+        allstateitemListTemp.addAll(allstateitemList);
 
         allState_spn_adapter = new AllState_Spn_Adapter(context, allstateitemListTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_New_Customer_Activity.this, LinearLayoutManager.VERTICAL, false));
@@ -920,7 +971,7 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
     }
 
 
-    private void getCategoryDepapi(final TextView view) {
+    private void getCategoryDepapi(final TextView view,boolean checkDialog) {
         showPrd();
 
         allCategoryDeptitemList.clear();
@@ -944,15 +995,17 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryCategoryDepDailog(view);
+                        if(checkDialog==true){
+                            enquiryCategoryDepDailog(view);
+                        }
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -962,7 +1015,7 @@ public class Add_New_Customer_Activity extends AppCompatActivity {
             public void onFailure(Call<AllCategoryDeparment> call, Throwable t) {
 
                 hidePrd();
-                Utils.showToast(context, "No Internet Connection", R.color.red);
+                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
             }
         });
 

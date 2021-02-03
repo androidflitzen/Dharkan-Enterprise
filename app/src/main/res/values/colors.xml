@@ -74,4 +74,7 @@
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
 
     <color name="black">#000000</color>
+    <color name="dark_grey">#555555</color>
+    <color name="lTypeSimple">#1B8057</color>
+
 </resources>

@@ -184,7 +184,7 @@ public class Notification_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<DeleteAllNotification> call, Throwable t) {
                 hidePrd();
-                Utils.showToast(context, "Something Went to Wrong!", R.color.red);
+                Utils.showToast(context, "Something Went to Wrong!", R.color.red_dark);
 
             }
         });

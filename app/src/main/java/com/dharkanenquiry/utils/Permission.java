@@ -106,6 +106,32 @@ public class Permission {
         }
     }
 
+    @SuppressLint({"WrongConstant", "NewApi"})
+    public static void onRequestPermissionsResult2(Activity activity, @NonNull String[] permissions) {
+        for (String permission : permissions) {
+
+            if (ContextCompat.checkSelfPermission(
+                    activity, permission) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                Log.e("Permission: ", "User Has Allowed Permission");
+                // You can use the API that requires the permission.
+            } else if (activity.shouldShowRequestPermissionRationale(permission)) {
+                // In an educational UI, explain to the user why your app requires this
+                // permission for a specific feature to behave as expected. In this UI,
+                // include a "cancel" or "no thanks" button that allows the user to
+                // continue using your app without granting the permission.
+                Log.e("Permission: ", "User Has Denied Permission with Don't Ask Again");
+                openAlertDialog(activity);
+
+            } else {
+                // You can directly ask for the permission.
+                // The registered ActivityResultCallback gets the result of this request.
+                Log.e("Permission: ", "User Has Denied Permission");
+                activity.requestPermissions(new String[]{permission}, 300);
+            }
+        }
+    }
+
     private static void openAlertDialog(Activity activity) {
 
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(activity);

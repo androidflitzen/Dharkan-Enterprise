@@ -6,7 +6,9 @@ import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.ServiceConnection;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dharkanenquiry.Activity.Customerlist_Activiy;
 import com.dharkanenquiry.Activity.Enquiry_Activity;
@@ -39,6 +43,19 @@ import com.dharkanenquiry.utils.SharedPrefsUtils;
 import com.dharkanenquiry.utils.Utils;
 import com.dharkanenquiry.utils.WebApi;
 import com.dharkanenquiry.vasudhaenquiry.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,16 +85,28 @@ public class HomeFragment extends Fragment {
 
     List<AllEnquiry> enquiryList = new ArrayList();
     //private String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_BACKGROUND_LOCATION};
-    private String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
+   // private String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
+   // private String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
+    private String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION};
 
     WebApi webapi;
     public BackgroundLocationService gpsService;
+    private GoogleApiClient googleApiClient;
+    final static int REQUEST_LOCATION = 199;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, null);
+
+       /* FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                System.out.println("===========token  "+task.getResult());
+            }
+        });*/
 
         unbinder = ButterKnife.bind(this, view);
         context = getActivity();
@@ -290,17 +319,13 @@ public class HomeFragment extends Fragment {
                 if (Permission.hasPermissions((Activity) context, permissions)) {
                    // if (SharedPrefsUtils.getSharedPreferenceBoolean(context, SharedPrefsUtils.CHECK_SERVICE, false) == false) {
                     boolean check = isMyServiceRunning(BackgroundLocationService.class);
-                    if(check==true){
-
-                    }else {
-                        startService();
-                    }
+                    checkGPSONOFF();
                     //}
                 } else {
-                    Permission.onRequestPermissionsResult((Activity) context, permissions);
+                    Permission.onRequestPermissionsResult2((Activity) context, permissions);
                 }
             } else {
-                startService();
+               checkGPSONOFF();
             }
         }
     }
@@ -322,4 +347,110 @@ public class HomeFragment extends Fragment {
         System.out.println("===========false");
         return false;
     }
+
+    private void checkGPSONOFF(){
+        final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean checkGPS;
+        /*if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && hasGPSDevice(getActivity())) {
+            Toast.makeText(getActivity(),"Gps already enabled....",Toast.LENGTH_SHORT).show();
+
+        }*/
+        // Todo Location Already on  ... end
+
+        if(!hasGPSDevice(getActivity())){
+            Toast.makeText(getActivity(),"Gps not Supported",Toast.LENGTH_SHORT).show();
+        }
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && hasGPSDevice(getActivity())) {
+            //Toast.makeText(getActivity(),"Gps not enabled",Toast.LENGTH_SHORT).show();
+            enableLoc();
+        }else{
+            //Toast.makeText(getActivity(),"Gps already enabled",Toast.LENGTH_SHORT).show();
+            if(isMyServiceRunning(BackgroundLocationService.class)==false){
+                startService();
+            }
+        }
+    }
+
+    private boolean hasGPSDevice(Context context) {
+        final LocationManager mgr = (LocationManager) context
+                .getSystemService(Context.LOCATION_SERVICE);
+        if (mgr == null)
+            return false;
+        final List<String> providers = mgr.getAllProviders();
+        if (providers == null)
+            return false;
+        return providers.contains(LocationManager.GPS_PROVIDER);
+    }
+
+    private void enableLoc() {
+
+        //if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(getActivity())
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                        @Override
+                        public void onConnected(Bundle bundle) {
+
+                        }
+
+                        @Override
+                        public void onConnectionSuspended(int i) {
+                            googleApiClient.connect();
+                        }
+                    })
+                    .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(ConnectionResult connectionResult) {
+
+                            Log.d("Location error","Location error " + connectionResult.getErrorCode());
+                        }
+                    }).build();
+            googleApiClient.connect();
+
+            LocationRequest locationRequest = LocationRequest.create();
+            LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                    .addLocationRequest(locationRequest);
+
+            builder.setAlwaysShow(true);
+
+            PendingResult<LocationSettingsResult> result =
+                    LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+            result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+                @Override
+                public void onResult(LocationSettingsResult result) {
+                    final Status status = result.getStatus();
+                    switch (status.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            System.out.println("=========cancel");
+                            try {
+                                // Show the dialog by calling startResolutionForResult(),
+                                // and check the result in onActivityResult().
+                                status.startResolutionForResult(getActivity(), REQUEST_LOCATION);
+                            } catch (IntentSender.SendIntentException e) {
+                                // Ignore the error.
+                            }
+                            break;
+                    }
+                }
+            });
+        //}
+    }
+
+   /* @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+// Check for the integer request code originally supplied to startResolutionForResult().
+            case REQUEST_LOCATION:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        startService();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        enableLoc();
+                        break;
+                }
+                break;
+        }
+    }*/
 }

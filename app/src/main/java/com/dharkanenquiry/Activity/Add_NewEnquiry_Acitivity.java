@@ -257,25 +257,48 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(doubleBounce);
         webapi = Utils.getRetrofitClient().create(WebApi.class);
 
+        getAllStateapi(tvStateSpn,false);
+        getCategoryDepapi(tvEnquiryCategDepory,false);
+        getUserApi(tvAssignUserSpn,false);
+        getproductapi(tvEnquiryProduct,false);
+        getenquirysourcapi(tvEnquirySource,false);
+        getenquirycategoryapi(tvEnquiryCatagory,false);
+        getenquiryregionapi(tvEnquiryRegion,false);
+
         rvEnquiryStatespn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getAllStateapi(tvStateSpn);
+              //  getAllStateapi(tvStateSpn);
+                if(allstateitemList.size()>0){
+                    enquirystatedailog(tvStateSpn);
+                }else {
+                    getAllStateapi(tvStateSpn,true);
+                }
             }
         });
 
         rvEnquiryCategoryDepspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCategoryDepapi(tvEnquiryCategDepory);
+               // getCategoryDepapi(tvEnquiryCategDepory);
+                if(allCategoryDeptitemList.size()>0) {
+                    enquiryCategoryDepDailog(tvEnquiryCategDepory);
+                }else {
+                    getCategoryDepapi(tvEnquiryCategDepory,true);
+                }
             }
         });
 
         rvAssignspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getUserApi(tvAssignUserSpn);
+                //getUserApi(tvAssignUserSpn);
+                if(itemListUser.size()>0){
+                    userDialog(tvAssignUserSpn);
+                }else {
+                    getUserApi(tvAssignUserSpn,true);
+                }
             }
         });
 
@@ -283,8 +306,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getproductapi(tvEnquiryProduct);
-
+                //getproductapi(tvEnquiryProduct);
+                if(itemListProduct.size()>0){
+                    productDialog(tvEnquiryProduct);
+                }else {
+                    getproductapi(tvEnquiryProduct,true);
+                }
             }
         });
 
@@ -293,8 +320,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquirysourcapi(tvEnquirySource);
-
+               // getenquirysourcapi(tvEnquirySource);
+                if(itemListEnquirySource.size()>0){
+                    enquirySourceDialog(tvEnquirySource);
+                }else {
+                    getenquirysourcapi(tvEnquirySource,true);
+                }
             }
         });
 
@@ -335,8 +366,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquirycategoryapi(tvEnquiryCatagory);
-
+               // getenquirycategoryapi(tvEnquiryCatagory);
+                if(itemListEnquiryCategory.size()>0){
+                    enquiryCategoryDialog(tvEnquiryCatagory);
+                }else {
+                    getenquirycategoryapi(tvEnquiryCatagory,true);
+                }
             }
         });
 
@@ -344,7 +379,12 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getenquiryregionapi(tvEnquiryRegion);
+               // getenquiryregionapi(tvEnquiryRegion);
+                if(allregionitemList.size()>0){
+                    enquiryRegionDialog(tvEnquiryRegion);
+                }else {
+                    getenquiryregionapi(tvEnquiryRegion,true);
+                }
             }
         });
 
@@ -491,9 +531,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getenquiryregionapi(final TextView view) {
+    private void getenquiryregionapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         //  progressBar.setVisibility(View.VISIBLE);
         allregionitemList.clear();
         allregionitemListTemp.clear();
@@ -516,7 +558,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryRegionDialog(view);
+                        if(checkDialog==true){
+                            enquiryRegionDialog(view);
+                        }
 
 
                     } else {
@@ -535,12 +579,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<AllRegion> call, Throwable t) {
                 hidePrd();
                 //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red_dark);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please check your internet", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
     private void enquiryRegionDialog(final TextView textView) {
@@ -574,6 +617,10 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             arrayListTemp.add(allregionitemList.get(i).getRegionName());
             arrayListId.add(allregionitemList.get(i).getRegionId());
         }
+
+
+        allregionitemListTemp.clear();
+        allregionitemListTemp.addAll(allregionitemList);
 
         allRegion_spn_adapter = new AllRegion_Spn_Adapter(context, allregionitemListTemp);
 
@@ -692,9 +739,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getenquirycategoryapi(final TextView view) {
+    private void getenquirycategoryapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         //  progressBar.setVisibility(View.VISIBLE);
         itemListEnquiryCategory.clear();
         itemListEnquiryCategoryTemp.clear();
@@ -717,7 +766,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryCategoryDialog(view);
+                        if(checkDialog==true){
+                            enquiryCategoryDialog(view);
+                        }
 
 
                     } else {
@@ -736,13 +787,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<EnquiryCategory> call, Throwable t) {
                 hidePrd();
                 //  progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red_dark);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please check your internet", R.color.red_dark);
+                }
             }
         });
-
-
-
     }
 
     private void enquiryCategoryDialog(final TextView textView) {
@@ -892,9 +941,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getenquirysourcapi(final TextView view) {
+    private void getenquirysourcapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         // progressBar.setVisibility(View.VISIBLE);
         itemListEnquirySource.clear();
         itemListEnquirySourceTemp.clear();
@@ -916,7 +967,10 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                                 return object1.getEsName().compareTo(object2.getEsName());
                             }
                         });
-                        enquirySourceDialog(view);
+
+                        if(checkDialog==true){
+                            enquirySourceDialog(view);
+                        }
 
 
                     } else {
@@ -934,14 +988,13 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<EnquirySource> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
-
+                hidePrd();
+                //progressBar.setVisibility(View.GONE);
+                if(checkDialog==true){
+                    Utils.showToast(context, "No Internet Connection", R.color.red_dark);
+                }
             }
         });
-
-
-
     }
 
     private void enquirySourceDialog(final TextView textView) {
@@ -1074,9 +1127,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getproductapi(final TextView view) {
+    private void getproductapi(final TextView view,boolean checkDialog) {
 
-        showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         // progressBar.setVisibility(View.VISIBLE);
         itemListProduct.clear();
         itemListProductTemp.clear();
@@ -1098,7 +1153,10 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                                 return object1.getPName().compareTo(object2.getPName());
                             }
                         });
-                        productDialog(view);
+
+                        if(checkDialog==true){
+                            productDialog(view);
+                        }
 
 
                     } else {
@@ -1118,8 +1176,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<Product> call, Throwable t) {
                 hidePrd();
                 //progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please Check Your Internet.", R.color.red_dark);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please Check Your Internet.", R.color.red_dark);
+                }
             }
         });
 
@@ -1153,6 +1212,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             arrayListTemp.add(itemListProduct.get(i).getPName());
             arrayListId.add(itemListProduct.get(i).getPId());
         }
+
+        itemListProductTemp.clear();
+        itemListProductTemp.addAll(itemListProduct);
 
         product_spn_adapter = new Product_Spn_Adapter_New(context, itemListProductTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_NewEnquiry_Acitivity.this, LinearLayoutManager.VERTICAL, false));
@@ -1251,9 +1313,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getUserApi(final TextView view) {
+    private void getUserApi(final TextView view,boolean checkDialog) {
 
-        progressBar.setVisibility(View.VISIBLE);
+        if(checkDialog==true){
+            showPrd();
+        }
         itemListUser.clear();
         itemListUserTemp.clear();
 
@@ -1275,7 +1339,10 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                                 return object1.getName().compareTo(object2.getName());
                             }
                         });
-                        userDialog(view);
+
+                        if(checkDialog==true){
+                            userDialog(view);
+                        }
 
 
                     } else {
@@ -1285,14 +1352,16 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                 } else {
                     Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
-                progressBar.setVisibility(View.GONE);
+                hidePrd();
             }
 
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Utils.showToast(context, "Please check your internet", R.color.red_dark);
-
+                showPrd();
+                //progressBar.setVisibility(View.GONE);
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please check your internet", R.color.red_dark);
+                }
             }
         });
 
@@ -1324,6 +1393,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             arrayListTemp.add(itemListUser.get(i).getName());
             arrayListId.add(itemListUser.get(i).getUserId());
         }
+
+        itemListUserTemp.clear();
+        itemListUserTemp.addAll(itemListUser);
 
         alluseradapter = new AllUserAdapter(context, itemListUserTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_NewEnquiry_Acitivity.this, LinearLayoutManager.VERTICAL, false));
@@ -1416,8 +1488,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
 
     }
 
-    private void getCategoryDepapi(final TextView view) {
-        showPrd();
+    private void getCategoryDepapi(final TextView view,boolean checkDialog) {
+
+        if(checkDialog==true){
+            showPrd();
+        }
 
         allCategoryDeptitemList.clear();
         allCategoryDeptitemListTemp.clear();
@@ -1440,7 +1515,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                             }
                         });
 
-                        enquiryCategoryDepDailog(view);
+                        if(checkDialog==true){
+                            enquiryCategoryDepDailog(view);
+                        }
 
                     } else {
                         Utils.showToast(context, "No Data Found", R.color.red_dark);
@@ -1458,7 +1535,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             public void onFailure(Call<AllCategoryDeparment> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 hidePrd();
-                Utils.showToast(context, "No Internet Connection", R.color.red_dark);
+                if(checkDialog==true){
+                    Utils.showToast(context, "No Internet Connection", R.color.red_dark);
+                }
             }
         });
 
@@ -1597,7 +1676,7 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
     }
 
 
-    private void getAllStateapi(final TextView view) {
+    private void getAllStateapi(final TextView view,boolean checkDialog) {
         showPrd();
 
         allstateitemList.clear();
@@ -1620,7 +1699,11 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
                                 return object1.getStateName().compareTo(object2.getStateName());
                             }
                         });
-                        enquirystatedailog(view);
+
+                        if(checkDialog==true){
+                            enquirystatedailog(view);
+                        }
+
 
                     } else {
                         Utils.showToast(context, "No Data Found", R.color.red_dark);
@@ -1671,6 +1754,9 @@ public class Add_NewEnquiry_Acitivity extends AppCompatActivity {
             arrayListTemp.add(allstateitemList.get(i).getStateName());
             arrayListId.add(allstateitemList.get(i).getStateName());
         }
+
+        allstateitemListTemp.clear();
+        allstateitemListTemp.addAll(allstateitemList);
 
         allState_spn_adapter = new AllState_Spn_Adapter(context, allstateitemListTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_NewEnquiry_Acitivity.this, LinearLayoutManager.VERTICAL, false));

@@ -153,18 +153,33 @@ public class Add_NewTask_Activity extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(doubleBounce);
         webapi = Utils.getRetrofitClient().create(WebApi.class);
 
+        getCompanyapi(tvTaskCompanySpn,false);
+        getUserApi(tvTaskAssignName,false);
+
         rvCompnyspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getCompanyapi(tvTaskCompanySpn);
+               // getCompanyapi(tvTaskCompanySpn);
+                if(itemListCustomer.size()>0){
+                    customerDialog(tvTaskCompanySpn);
+                }else {
+                    getCompanyapi(tvTaskCompanySpn,true);
+                }
             }
         });
 
         rvAssignspn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getUserApi(tvTaskAssignName);
+               // getUserApi(tvTaskAssignName);
+
+                if(itemListUser.size()>0){
+                    userDialog(tvTaskAssignName);
+                }else {
+                    getUserApi(tvTaskAssignName,true);
+                }
+
             }
         });
 
@@ -270,44 +285,44 @@ public class Add_NewTask_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (tvTaskCompanySpn.getText().toString().trim().isEmpty()) {
-                    tvcompany1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select CompanyName", R.color.red);
+                    tvcompany1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select CompanyName", R.color.red_dark);
                     //tvCompanySpn.setError("Select CompanyName");
                     //tvCompanySpn.requestFocus();
                     return;
                 }
                 if (tvTaskAssignName.getText().toString().trim().isEmpty()) {
-                    tvAssign1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select User", R.color.red);
+                    tvAssign1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select User", R.color.red_dark);
                     // tvEnquiryProduct.setError("Select ProductName");
                     //tvEnquiryProduct.requestFocus();
                     return;
                 }
                 if (tvTaskDeadlineDate.getText().toString().trim().isEmpty()) {
-                    tvdate1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Date", R.color.red);
+                    tvdate1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Date", R.color.red_dark);
                     // tvEnquirySource.setError("Select Source");
                     // tvEnquirySource.requestFocus();
                     return;
                 }
                 if (tvTaskDeadlineTime.getText().toString().trim().isEmpty()) {
-                    tvTime1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Time", R.color.red);
+                    tvTime1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Time", R.color.red_dark);
                     //tvImportance.setError("Select Importance");
                     // tvImportance.requestFocus();
                     return;
                 }
 
                 if (tvMedium.getText().toString().trim().isEmpty()) {
-                    tvMedium1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Medium", R.color.red);
+                    tvMedium1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Medium", R.color.red_dark);
                     // tvEnquiryCatagory.setError("Select Category");
                     // tvEnquiryCatagory.requestFocus();
                     return;
                 }
                 if (etTaskTitle.getText().toString().trim().isEmpty()) {
-                    tvTaskTitle1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select TaskTitle", R.color.red);
+                    tvTaskTitle1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select TaskTitle", R.color.red_dark);
                     // tvEnquiryCatagory.setError("Select Category");
                     // tvEnquiryCatagory.requestFocus();
                     return;
@@ -328,7 +343,7 @@ public class Add_NewTask_Activity extends AppCompatActivity {
 
                             Utils.showToast(context, "New Task Assign Successful", R.color.green_fed);
                         } else {
-                            Utils.showToast(context, "Oops Something wrong", R.color.red);
+                            Utils.showToast(context, "Oops Something wrong", R.color.red_dark);
                         }
                       hidePrd();
                     }
@@ -346,9 +361,11 @@ public class Add_NewTask_Activity extends AppCompatActivity {
 
     }
 
-    private void getUserApi(final TextView view) {
+    private void getUserApi(final TextView view,boolean checkDialog) {
 
-       showPrd();
+        if(checkDialog==true){
+            showPrd();
+        }
         itemListUser.clear();
         itemListUserTemp.clear();
 
@@ -371,15 +388,17 @@ public class Add_NewTask_Activity extends AppCompatActivity {
                                 return object1.getName().compareTo(object2.getName());
                             }
                         });
-                        userDialog(view);
 
+                        if(checkDialog==true){
+                            userDialog(view);
+                        }
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                hidePrd();
             }
@@ -387,16 +406,15 @@ public class Add_NewTask_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
                hidePrd();
-                Utils.showToast(context, "Please Try Again", R.color.red);
-
+                if(checkDialog==true){
+                    Utils.showToast(context, "Please Try Again", R.color.red_dark);
+                }
             }
         });
-
-
     }
 
 
-    private void getCompanyapi(final TextView view) {
+    private void getCompanyapi(final TextView view,boolean checkDialog) {
 
        showPrd();
 
@@ -422,15 +440,17 @@ public class Add_NewTask_Activity extends AppCompatActivity {
                             }
                         });
 
-                        customerDialog(view);
+                        if(checkDialog==true){
+                            customerDialog(view);
+                        }
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something wrong", R.color.red_dark);
                 }
                 hidePrd();
             }
@@ -438,7 +458,7 @@ public class Add_NewTask_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Customers> call, Throwable t) {
               hidePrd();
-                Utils.showToast(context, "Please Try Again", R.color.red);
+                Utils.showToast(context, "Please Try Again", R.color.red_dark);
 
             }
         });
@@ -471,6 +491,9 @@ public class Add_NewTask_Activity extends AppCompatActivity {
             arrayListTemp.add(itemListUser.get(i).getName());
             arrayListId.add(itemListUser.get(i).getUserId());
         }
+
+        itemListUserTemp.clear();
+        itemListUserTemp.addAll(itemListUser);
 
         alluseradapter = new AllUserAdapter(context, itemListUserTemp);
         list_location.setLayoutManager(new LinearLayoutManager(Add_NewTask_Activity.this, LinearLayoutManager.VERTICAL, false));

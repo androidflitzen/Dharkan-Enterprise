@@ -117,8 +117,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:gravity="center"
                                 android:layout_marginLeft="@dimen/_20sdp"
+                                android:gravity="center"
                                 android:text="Enquiry"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="@dimen/_18sdp" />
@@ -128,8 +128,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text=" "
                                 android:gravity="center"
+                                android:text=" "
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="@dimen/_16sdp" />
 
