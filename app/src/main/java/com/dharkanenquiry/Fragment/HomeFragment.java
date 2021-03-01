@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
 
     List<AllEnquiry> enquiryList = new ArrayList();
     //private String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_BACKGROUND_LOCATION};
-   // private String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
+    //private String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
    // private String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
     private String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -314,20 +314,18 @@ public class HomeFragment extends Fragment {
         allenquiry();
         allTask();
 
-        if (SharedPrefsUtils.getSharedPreferenceInt(context, SharedPrefsUtils.TYPE,0)==2) {
+        /*if (SharedPrefsUtils.getSharedPreferenceInt(context, SharedPrefsUtils.TYPE,0)==2) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (Permission.hasPermissions((Activity) context, permissions)) {
-                   // if (SharedPrefsUtils.getSharedPreferenceBoolean(context, SharedPrefsUtils.CHECK_SERVICE, false) == false) {
                     boolean check = isMyServiceRunning(BackgroundLocationService.class);
                     checkGPSONOFF();
-                    //}
                 } else {
                     Permission.onRequestPermissionsResult2((Activity) context, permissions);
                 }
             } else {
                checkGPSONOFF();
             }
-        }
+        }*/
     }
 
     @Override

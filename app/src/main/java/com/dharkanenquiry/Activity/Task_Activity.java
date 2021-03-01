@@ -110,7 +110,7 @@ public class Task_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 // tvTaskPending.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 rlPending.setBackground(getResources().getDrawable(R.drawable.task_title_bg));
-                rlCompleted.setBackground(getResources().getDrawable(R.drawable.task_bg_sub));
+                rlCompleted.setBackground(getResources().getDrawable(R.drawable.task_bg_sub1));
                 tvTitleTask.setText("Pending Task");
                 viewPending.setVisibility(View.VISIBLE);
                 viewCompleted.setVisibility(View.GONE);
@@ -121,7 +121,7 @@ public class Task_Activity extends AppCompatActivity {
         tvtaskComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rlPending.setBackground(getResources().getDrawable(R.drawable.task_bg_sub));
+                rlPending.setBackground(getResources().getDrawable(R.drawable.task_bg_sub1));
                 rlCompleted.setBackground(getResources().getDrawable(R.drawable.task_title_bg));
                 tvTitleTask.setText("Completed Task");
                 viewPending.setVisibility(View.GONE);
@@ -254,7 +254,7 @@ public class Task_Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         rlPending.setBackground(getResources().getDrawable(R.drawable.task_title_bg));
-        rlCompleted.setBackground(getResources().getDrawable(R.drawable.task_bg_sub));
+        rlCompleted.setBackground(getResources().getDrawable(R.drawable.task_bg_sub1));
         tvTitleTask.setText("Pending Task");
         viewPending.setVisibility(View.VISIBLE);
         viewCompleted.setVisibility(View.GONE);

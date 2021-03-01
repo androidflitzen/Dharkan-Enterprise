@@ -259,37 +259,37 @@ public class Add_ActionEnquiries_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (tvTaskAssignName.getText().toString().trim().isEmpty()) {
-                    tvAssign1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select User", R.color.red);
+                    tvAssign1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select User", R.color.red_dark);
                     // tvEnquiryProduct.setError("Select ProductName");
                     //tvEnquiryProduct.requestFocus();
                     return;
                 }
                 if (tvTaskDeadlineDate.getText().toString().trim().isEmpty()) {
-                    tvdate1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Date", R.color.red);
+                    tvdate1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Date", R.color.red_dark);
                     // tvEnquirySource.setError("Select Source");
                     // tvEnquirySource.requestFocus();
                     return;
                 }
                 if (tvTaskDeadlineTime.getText().toString().trim().isEmpty()) {
-                    tvTime1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Time", R.color.red);
+                    tvTime1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Time", R.color.red_dark);
                     //tvImportance.setError("Select Importance");
                     // tvImportance.requestFocus();
                     return;
                 }
 
                 if (tvMedium.getText().toString().trim().isEmpty()) {
-                    tvMedium1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select Medium", R.color.red);
+                    tvMedium1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select Medium", R.color.red_dark);
                     // tvEnquiryCatagory.setError("Select Category");
                     // tvEnquiryCatagory.requestFocus();
                     return;
                 }
                 if (etTaskTitle.getText().toString().trim().isEmpty()) {
-                    tvTaskTitle1.setTextColor(getResources().getColor(R.color.red));
-                    Utils.showToast(context, "Select TaskTitle", R.color.red);
+                    tvTaskTitle1.setTextColor(getResources().getColor(R.color.red_dark));
+                    Utils.showToast(context, "Select TaskTitle", R.color.red_dark);
                     // tvEnquiryCatagory.setError("Select Category");
                     // tvEnquiryCatagory.requestFocus();
                     return;
@@ -312,7 +312,7 @@ public class Add_ActionEnquiries_Activity extends AppCompatActivity {
 
                             Utils.showToast(context, "New action assign Successful", R.color.green_fed);
                         } else {
-                            Utils.showToast(context, "Oops something wrong", R.color.red);
+                            Utils.showToast(context, "Oops something wrong", R.color.red_dark);
                         }
                         //progressBar.setVisibility(View.GONE);
                         hidePrd();
@@ -364,12 +364,12 @@ public class Add_ActionEnquiries_Activity extends AppCompatActivity {
 
 
                     } else {
-                        Utils.showToast(context, "No Data Found", R.color.red);
+                        Utils.showToast(context, "No Data Found", R.color.red_dark);
                         hidePrd();
                     }
 
                 } else {
-                    Utils.showToast(context, "Opps Something Wrong", R.color.red);
+                    Utils.showToast(context, "Opps Something Wrong", R.color.red_dark);
                     hidePrd();
                 }
                 hidePrd();
@@ -380,7 +380,7 @@ public class Add_ActionEnquiries_Activity extends AppCompatActivity {
             public void onFailure(Call<Users> call, Throwable t) {
               //  progressBar.setVisibility(View.GONE);
                 hidePrd();
-                Utils.showToast(context, "Please Try Again", R.color.red);
+                Utils.showToast(context, "Please Try Again", R.color.red_dark);
 
             }
         });

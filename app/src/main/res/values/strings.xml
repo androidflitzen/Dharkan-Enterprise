@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dharkan Enterprise</string>
+    <string name="app_name">Vasudha</string>
 
     <string name="no_internet_connection">No internet Connection</string>
 
@@ -9,7 +9,7 @@
     <string name="task_delete">Are You Sure Delete this Task ?</string>
     <string name="current_location">Last Location</string>
 
-    <string name="app_update_msg">Dharkan Enterprise recommends that you update to the latest version. You can keep using this app while downloading the update.</string>
+    <string name="app_update_msg">Vasudha recommends that you update to the latest version. You can keep using this app while downloading the update.</string>
 
 
 </resources>

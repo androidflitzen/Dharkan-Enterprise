@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/login_start"
+            android:background="@color/dash_back"
             android:orientation="horizontal"
             android:padding="@dimen/_5sdp">
 

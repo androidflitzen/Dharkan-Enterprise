@@ -49,8 +49,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -470,8 +473,11 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         uniqID = allenquiryList.get(position).getEnquiryId();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Order_Status_" + ".pdf");
+       // File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Order_Status_" + ".pdf");
+
         try {
+            DateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
+            File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Order_Status_"+ df.format(new Date()) + ".pdf");
             if (myFile.exists()) {
                 if (action == 0) {
                     openPDFFile(myFile,allenquiryList.get(position).getOrderUrl());
@@ -483,6 +489,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
                 new DownloadFileFromURL(myFile, action).execute(allenquiryList.get(position).getOrderUrl());
             }
         } catch (Exception e) {
+            Utils.showToast(context, "Something Wrong...", R.color.msg_fail);
             e.printStackTrace();
         }
 
@@ -562,8 +569,10 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
         uniqID = allenquiryList.get(position).getEnquiryId();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Request_Status_" + ".pdf");
+      //  File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Request_Status_" + ".pdf");
         try {
+            DateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
+            File myFile = new File(new File(Utils.getItemDir()), allenquiryList.get(position).getEnquiryId() + "Request_Status_"+ df.format(new Date()) + ".pdf");
             if (myFile.exists()) {
                 if (action == 0) {
                     openPDFFile(myFile,allenquiryList.get(position).getOrderUrl());
@@ -575,6 +584,7 @@ AllEnquiryAdapter extends RecyclerView.Adapter<AllEnquiryAdapter.ViewHolder> {
                 new DownloadFileFromURL(myFile, action).execute(allenquiryList.get(position).getQuotationUrl());
             }
         } catch (Exception e) {
+            Utils.showToast(context, "Something Wrong...", R.color.msg_fail);
             e.printStackTrace();
         }
     }

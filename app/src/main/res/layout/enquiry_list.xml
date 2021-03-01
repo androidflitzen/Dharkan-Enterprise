@@ -414,7 +414,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:text="Request correction? "
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/_8sdp"
                             android:visibility="gone"/>
 
@@ -496,7 +496,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:text="Request correction? "
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/blue"
                             android:textSize="@dimen/_8sdp"
                             android:visibility="gone"/>
 

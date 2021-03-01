@@ -55,7 +55,7 @@
                             android:layout_height="@dimen/_20sdp"
                             android:layout_marginLeft="@dimen/_15sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_bell"
+                            android:src="@drawable/ic_notification"
                             android:tint="@color/white" />
 
                         <TextView

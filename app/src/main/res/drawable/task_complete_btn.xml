@@ -3,7 +3,7 @@
 
 
     <corners android:radius="@dimen/_15sdp" />
-    <solid android:color="@color/login_end"/>
+    <solid android:color="@color/green_fed"/>
 
 
 </shape>

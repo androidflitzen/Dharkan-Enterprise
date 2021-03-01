@@ -70,13 +70,20 @@ public class SplashScreen_Activity extends AppCompatActivity {
                 try {
                     VersionChecker versionChecker = new VersionChecker();
                     String latestVersion = versionChecker.execute().get();
-                    if(Double.parseDouble(latestVersion) == Double.parseDouble(appVersion)){
+                    if(latestVersion!=null){
+                        if(Double.parseDouble(latestVersion) == Double.parseDouble(appVersion)){
+                            startActivity(new Intent(SplashScreen_Activity.this, Login_Activity.class));
+                            overridePendingTransition(R.anim.feed_in, R.anim.feed_out);
+                            finish();
+                        }else {
+                            updateApp();
+                        }
+                    }else {
                         startActivity(new Intent(SplashScreen_Activity.this, Login_Activity.class));
                         overridePendingTransition(R.anim.feed_in, R.anim.feed_out);
                         finish();
-                    }else {
-                        updateApp();
                     }
+
                 }catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
